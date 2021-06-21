@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/black.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>React</h1>
+			</section>
+			<section>
+				<section>React (also known ReactJS) is an open-source front-end JavaScript library for building user interfaces
+					or UI components</section>
+				<!-- <section>
+					<ul>React component areas:</ul>
+					<li style="font-size: 30px;">Data: This is data that comes from somewhere (the component doesn’t care where),
+						and is rendered by the component.</li>
+					<li style="font-size: 30px;">Lifecycle: These are methods that we implement that respond to changes in the
+						lifecycle of the component. For example, the component is about to be rendered.</li>
+					<li style="font-size: 30px;">Events: This is code that we write for responding to user interactions.</li>
+					<li style="font-size: 30px;">JSX: This is the syntax of React components used to describe UI structures.</li>
+				</section> -->
+			</section>
+			<section>
+				<section>
+					<h3>React features:</h3>
+					<ul>
+						<li class="fragment fade-in" style="font-size: 30px;">Uses reusable/composable UI components to develop the
+							view.</li>
+						<li class="fragment fade-in" style="font-size: 30px;">Uses Virtual Dom</li>
+						<li class="fragment fade-in" style="font-size: 30px;">Does Server-side rendering</li>
+						<li class="fragment fade-in" style="font-size: 30px;">Follow Unidirectional data flow, i.e. one-way data
+							binding. React’s data flow between components is
+							uni-directional (from parent to child only).</li>
+					</ul>
+				</section>
+				<section>
+					<img src="./images/view-actions-state.png" alt="">
+				</section>
+			</section>
+			<section>
+				<h3>JSX</h3>
+				<div class="r-stack">
+					<div class="fragment current-visible" style="min-width: 950px;">
+						<pre><code data-trim>
+						class Hello extends React.Component {
+							render() {
+								return &lt;h1&gt;Нello world!&lt;/h1&gt;;
+							};
+						}
+					
+						React.DOM.reder(&lt;Hello /&gt;, document.getElementById("root"));
+					</code></pre>
+					</div>
+					<div class="fragment fade-in" style="min-width: 600px;">
+						<pre><code data-trim>
+						&lt;div id="root"&gt;
+							&lt;h1&gt;Hello world!&lt;/h1&gt;
+						&lt;/div&gt;
+					</code></pre>
+					</div>
+				</div>
+			</section>
+			<section>
+				<h3>Props</h3>
+				<div class="r-stack">
+					<div class="fragment current-visible" style="min-width: 950px;">
+						<pre><code data-trim>
+						class Hello extends React.Component {
+							render() {
+								return &lt;h1&gt;Нello {this.props.name}&lt;/h1&gt;;
+							};
+						}
+					
+						React.DOM.reder(
+							&lt;Hello name="Jonh" /&gt;,
+							document.getElementById("root"));
+					</code></pre>
+					</div>
+					<div class="fragment fade-in" style="min-width: 600px;">
+						<pre><code data-trim>
+						&lt;div id="root"&gt;
+							&lt;h1&gt;Hello John&lt;/h1&gt;
+						&lt;/div&gt;
+					</code></pre>
+					</div>
+				</div>
+			</section>
+			<section>
+				<section>
+					<h3>State</h3>
+					<div class="r-stack">
+						<div class="fragment current-visible" style="min-width: 950px;">
+							<pre style="height: 520px;"><code data-trim>
+						class Hello extends React.Component {
+							constructor() {
+								super();
+								this.state = {
+									name: "John"
+								}
+							}
+							changeName() {
+								this.setState({
+									name: "Sam"
+								});
+							}
+							render() {
+								return (
+									&lt;p onClick={this.changeName}&gt;Нello {this.state.name}&lt;/p&gt;
+									);
+							};
+						}
+					
+					</code></pre>
+						</div>
+						<div class="fragment fade-in" style="min-width: 600px;">
+							<pre><code data-trim>
+						&lt;div id="root"&gt;
+							&lt;p&gt;Hello John&lt;/p&gt;
+						&lt;/div&gt;
+					</code></pre>
+						</div>
+						<div class="fragment fade-in" style="min-width: 600px;">
+							<pre><code data-trim>
+						&lt;div id="root"&gt;
+							&lt;p&gt;Hello Sam&lt;/p&gt;
+						&lt;/div&gt;
+					</code></pre>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Popular state manage libraries:</h3>
+					<ul>
+						<li style="font-size: 30px;">Redux</li>
+						<li style="font-size: 30px;">Reflux</li>
+						<li style="font-size: 30px;">Flummox</li>
+						<li style="font-size: 30px;">MobX</li>
+						<li style="font-size: 30px;">Alt</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Differences between props and state:</h3>
+					<ul>
+						<li style="font-size: 30px;">Components receive data from outside with props, whereas they can create and
+							manage their own data with state</li>
+						<li style="font-size: 30px;">Props are used to pass data, whereas state is for managing data</li>
+						<li style="font-size: 30px;">Data from props is read-only, and cannot be modified by a component that is
+							receiving it from outside</li>
+						<li style="font-size: 30px;">State data can be modified by its own component, but is private (cannot be
+							accessed from outside)</li>
+						<li style="font-size: 30px;">Props can only be passed from parent component to child (unidirectional flow)
+						</li>
+						<li style="font-size: 30px;">Modifying state should happen with the setState ( ) method</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>Pros:</h3>
+					<ul>
+						<li class="fragment fade-in" style="font-size: 30px;">JSX makes it easy to read the code of your components.
+							It is also really easy to see the layout, or how components are plugged/combined with each other.</li>
+						<li class="fragment fade-in" style="font-size: 30px;">React’s unidirectional data flow makes updating a user
+							interface predicable and reliable.</li>
+						<li class="fragment fade-in" style="font-size: 30px;">By keeping all the data that change during the
+							lifecycle
+							into a single state code for building the user interfaces can be intuitive and easy to understand.</li>
+						<li class="fragment fade-in" style="font-size: 30px;">You can render React on the server-side.</li>
+						<li class="fragment fade-in" style="font-size: 30px;">It is easy to test, and you can also integrate some
+							tools like jest.</li>
+						<li class="fragment fade-in" style="font-size: 30px;">It ensures readability and makes maintainability
+							easier.
+						</li>
+						<li class="fragment fade-in" style="font-size: 30px;">You can use React with any framework (Backbone.js,
+							Angular.js) as it is only a view layer.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Cons:</h3>
+					<ul>
+						<li class="fragment fade-in" style="font-size: 30px;">The library itself is pretty large.</li>
+						<li class="fragment fade-in" style="font-size: 30px;">It is only a view layer, you have still to plug your
+							code for Ajax requests, events, etc.</li>
+						<li class="fragment fade-in" style="font-size: 30px;">React can make a project’s configuration and setup
+							confusing.</li>
+						<li class="fragment fade-in" style="font-size: 30px;">You can get really far without a framework for user
+							interfaces. For most simple applications it can be simpler to build an application with vanilla
+							JavaScript.</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+			<section>
+				<h3>Why React?</h3>
+			</section>
+			<section>
+				<ol>
+					<li class="fragment fade-in" style="font-size: 30px;">Simplicity</li>
+					<li class="fragment fade-in" style="font-size: 30px;">Easy to learn</li>
+					<li class="fragment fade-in" style="font-size: 30px;">Native Approach</li>
+					<li class="fragment fade-in" style="font-size: 30px;">Data Binding</li>
+					<li class="fragment fade-in" style="font-size: 30px;">Performance</li>
+					<li class="fragment fade-in" style="font-size: 30px;">Testability</li>
+				</ol>
+			</section>
+			</section>
+			<section>THE END</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
